@@ -15,7 +15,14 @@ let package = Package(
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "Whisper"),
-
-    ]
+            name: "Whisper",
+            cSettings: [
+                .define("GGML_USE_ACCELERATE", .when(platforms: [.macOS, .macCatalyst, .iOS])),
+                .define("WHISPER_USE_COREML", .when(platforms: [.macOS, .macCatalyst, .iOS])),
+                .define("WHISPER_COREML_ALLOW_FALLBACK", .when(platforms: [.macOS, .macCatalyst, .iOS])),
+            ]
+        ),
+        
+    ],
+    cxxLanguageStandard: CXXLanguageStandard.cxx11
 )
