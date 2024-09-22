@@ -1,7 +1,7 @@
 #include "whisper.h"
 
 #ifdef WHISPER_USE_COREML
-#include "coreml/whisper-encoder.h"
+#include "whisper-encoder.h"
 #endif
 
 #ifdef GGML_USE_METAL
